@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<body>
+<form method="post" action="/result">
+    <input type="text" name="text">
+    <input type=submit value="submit">
+</form>
+<div>
+    <table>
+        {% for machine in docker_machines %}
+        <tr>
+            <td>{{machine.name}}</td>
+            <td>{{machine.ip}}</td>
+            <td>{{machine.ip_permissions}}</td>
+            <td>
+                {% for container in machine.containers %}
+                    {{container}}
+                {% endfor %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>
